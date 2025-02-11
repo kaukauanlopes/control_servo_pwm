@@ -47,7 +47,7 @@ pico_enable_stdio_usb(control_servo_pwm 1)
 # Add the standard library to the build
 target_link_libraries(control_servo_pwm
         pico_stdlib
-        hardware_pwm" 
+        hardware_pwm
         )
 
 # Add the standard include files to the build

@@ -12,7 +12,7 @@
 uint slice_num;
 uint channel;
 
-uint16_t calcula_pulso(uint16_t angulo) {
+uint16_t pulse(uint16_t angulo) {
     return 500 + (angulo * (2400 - 500) / 180);
 }
 
@@ -21,7 +21,7 @@ void posicao(uint16_t pulse_us) {
     pwm_set_chan_level(slice_num, channel, level);
 }
 
-void servo_config() {
+void servo_setup() {
     gpio_set_function(SERVO_PIN, GPIO_FUNC_PWM);
     slice_num = pwm_gpio_to_slice_num(SERVO_PIN);
     channel = pwm_gpio_to_channel(SERVO_PIN);
@@ -32,17 +32,17 @@ void servo_config() {
     pwm_init(slice_num, &config, true);
 }
 
-void movimentos() {
+void rotation() {
     printf("180°\n");
-    posicao(calcula_pulso(0));
+    posicao(pulse(0));
     sleep_ms(5000);
 
     printf("0°\n");
-    posicao(calcula_pulso(90));
+    posicao(pulse(90));
     sleep_ms(5000);
 
     printf("90°\n");
-    posicao(calcula_pulso(180));
+    posicao(pulse(180));
     sleep_ms(5000);
 
     printf("variando entre 0° e 180°\n");
@@ -50,19 +50,19 @@ void movimentos() {
 
 void servo_loop() {
     for (uint16_t angulo = 180; angulo > 0; angulo--) {
-        posicao(calcula_pulso(angulo));
+        posicao(pulse(angulo));
         sleep_ms(10);
     }
 
     for (uint16_t angulo = 0; angulo <= 180; angulo++) {
-        posicao(calcula_pulso(angulo));
+        posicao(pulse(angulo));
         sleep_ms(10);
     }}
 
 int main() {
   stdio_init_all();
-  servo_config(); 
-  movimentos();   
+  servo_setup(); 
+  rotation();   
 
   while (true) {servo_loop();} 
   return 0; 
