@@ -34,15 +34,15 @@ void servo_setup() {
 
 void rotation() {
     printf("180°\n");
-    posicao(pulse(0));
-    sleep_ms(5000);
-
-    printf("0°\n");
-    posicao(pulse(90));
+    posicao(pulse(180));
     sleep_ms(5000);
 
     printf("90°\n");
-    posicao(pulse(180));
+    posicao(pulse(90));
+    sleep_ms(5000);
+
+    printf("0°\n");
+    posicao(pulse(0));
     sleep_ms(5000);
 
     printf("variando entre 0° e 180°\n");
