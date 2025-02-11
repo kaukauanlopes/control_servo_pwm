@@ -41,7 +41,7 @@ void movimentos() {
     posicao(calcula_pulso(90));
     sleep_ms(5000);
 
-    uprintf("90°\n");
+    printf("90°\n");
     posicao(calcula_pulso(180));
     sleep_ms(5000);
 
@@ -60,7 +60,7 @@ void servo_loop() {
     }}
 
 int main() {
-  uart_config(); 
+  stdio_init_all();
   servo_config(); 
   movimentos();   
 
