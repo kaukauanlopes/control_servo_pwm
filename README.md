@@ -16,7 +16,7 @@ Este projeto implementa o controle de um servomotor utilizando PWM no microcontr
 3. Integre o Wokwi ao VS Code.
 4. Clone este repositório:
    sh
-   git clone <URL_DO_REPOSITORIO>
+   git clone <https://github.com/kaukauanlopes/control_servo_pwm.git>
    
 5. Compile o código:
    sh
